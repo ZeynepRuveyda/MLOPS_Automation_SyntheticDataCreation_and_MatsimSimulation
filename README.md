@@ -1,0 +1,2 @@
+# MLOPS_Automation_SyntheticDataCreation_and_MatsimSimulation
+Create kubeflow pipeline for automation the pipeline equasim
