@@ -2,12 +2,12 @@
 ## based on the synpp package
 
 # This is the path to a directory where the pipeline can store temporary data
-working_directory: cache
+working_directory: /home/ozelz/npc/tmp
 
 # This section defines which parts of the pipeline should be run
 run:
   - synthesis.output # To create the output population in the output_path (see below)
-  #- matsim.output # Uncomment, if you want to run the full simulation (you'll need Java for that)
+  - matsim.output # Uncomment, if you want to run the full simulation (you'll need Java for that)
 
 # Here the configuraiton of the pipeline starts
 config:
@@ -22,16 +22,32 @@ config:
   random_seed: 1234
 
   # Paths to the input data and where the output should be stored
-  data_path: /path/to/my/data
-  output_path: output
+  data_path: /home/ozelz/npc/data
+  output_path: /home/ozelz/npc/output
 
   # Only interesting if you run the simulation
-  java_memory: 14G
+  java_memory: 48G
 
   # Activate if you want to run mode choice
-  mode_choice: false
+  mode_choice: true
 
   # Uncommented below to enable vehicle fleet generation
   # generate_vehicles_file: True
   # generate_vehicles_method: fleet_sample
   # vehicles_data_year: 2015
+  regions: []
+  departments: ["59", "62"]
+  gtfs_path: gtfs_npc
+  osm_path: osm_npc
+  ban_path: ban_npc
+  bdtopo_path: bdtopo_npc
+  
+  # Demographic projections
+  #projection_year: 2030
+  #projection_scenario: 00_central
+  
+  # Urban type
+  #use_urban_type: true
+  #matching_attributes: ["urban_type", "*default*"]
+  
+  osmosis_binary: /home/ozelz/osmosis/bin/osmosis
