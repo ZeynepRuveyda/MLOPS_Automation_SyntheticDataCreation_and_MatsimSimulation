@@ -5,19 +5,21 @@ import kfp
 import kfp.components as comp
 import kfp.dsl as dsl
 
+from kubernets.clients import V1Volume, V1VolumeMount
+
 # Create volume and data management and transform
 def data_transform():
     vop = dsl.VolumeOp(name="pvc",
-                       resource_name="pvc", size='1Gi', 
+                       resource_name="pvc", size='20Gi', 
                        modes=dsl.VOLUME_MODE_RWO)
 
     return dsl.ContainerOp(
-        name = '/minikube', 
-        image = 'gcr.io/k8s-minikube/kicbase:v0.0.42@sha256:d35ac07dfda971cabee05e0deca8aeac772f885a5348e1a0c0b0a36db20fcfc0', 
+        name = '', 
+        image = '', 
         command = ['python3', '.py'],
 
         pvolumes={
-            '/data': vop.volume
+            'npc/data': vop.volume
         }
     )
 
@@ -26,7 +28,7 @@ def synthesis(comp1):
         name = 'synthesis',
         image = '',
         pvolumes={
-            '/data': comp1.pvolumes['/data']
+            'npc/data': comp1.pvolumes['npc/data']
         },
         command = ['python3', 'output.py']
     )    
@@ -36,7 +38,7 @@ def matsim_simulation1(comp2):
         name = 'matsim_simulation1',
         image = '',
         pvolumes={
-            '/data': comp2.pvolumes['/data']
+            'npc/data': comp2.pvolumes['npc/data']
         },
         command = ['python3', 'output.py']
     )
@@ -46,7 +48,7 @@ def matsim_simulation2(comp3):
         name = 'matsim_simulation2',
         image = '',
         pvolumes={
-            '/data': comp2.pvolumes['/data']
+            'npc/data': comp2.pvolumes['npc/data']
         },
         command = ['python3', 'writers.py']
     )
@@ -56,7 +58,7 @@ def test(comp4):
         name = 'test',
         image = '',
         pvolumes={
-            '/data': comp2.pvolumes['/data']
+            'npc/data': comp2.pvolumes['npc/data']
         },
         command = ['python3', 'test.py']
     )    
@@ -78,4 +80,4 @@ def  passing_parameter():
 # Compile and run the pipeline
 
 if __name__ == '__main__':
-  kfp.compiler.Compiler().compile(automation_pipeline, __file__[:-3]+ '.yaml')
+  kfp.compiler.Compiler().compile(automation_pipeline, package_path='my-app.yaml')

@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: my-app
+      app: my-app 
   replicas: 2 # Specify the number of pods to run
   template:
     metadata:
@@ -14,9 +14,21 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: my-app:latest # Specify the image to use
+        image: my-app:latest # Specify the image to usemy 
         ports:
         - containerPort: 5000 # Specify the port to expose
+        volumeMounts:
+        - name: my-app-valume
+          mountPath: /app
+         # /var/lib/docker/volumes/minikube/_data #Specify the mounth path in the container     
+
+      volumes:
+      - name: my-app-valume
+        hostPath:
+          path: home/ozelz/npc1/data
+          type: Directory
+       # persistentVolumeClaim:
+         # claimName: my-data-pvc   # Name of the PersistentVolumeClaim
 ---
 apiVersion: v1
 kind: Service
@@ -27,6 +39,6 @@ spec:
     app: my-app
   ports:
   - protocol: TCP
-    port: 80 # Specify the port to expose to the outside world
-    targetPort: 5000 # Specify the port of the pod to route to
-  type: LoadBalancer # Specify the type of service
+    port: 80
+    targetPort: 5000
+  type: LoadBalancer
