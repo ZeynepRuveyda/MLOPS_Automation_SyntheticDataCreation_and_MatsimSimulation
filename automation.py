@@ -1,4 +1,4 @@
-# Import the Kubeflow Pipelines SDK and other libraries
+
 import os
 
 import kfp
@@ -28,7 +28,7 @@ def synthesis(comp1):
         name = 'synthesis',
         image = '',
         pvolumes={
-            'npc/data': comp1.pvolumes['npc/data']
+            'npc/data': comp1.pvolumes['home/ozelz/npc/data']
         },
         command = ['python3', 'output.py']
     )    

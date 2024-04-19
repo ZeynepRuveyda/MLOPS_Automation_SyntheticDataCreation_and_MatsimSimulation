@@ -2,7 +2,7 @@
 ## based on the synpp package
 
 # This is the path to a directory where the pipeline can store temporary data
-working_directory: /home/ozelz/npc1/tmp
+working_directory: /home/ozelz/npc/tmp
 
 # This section defines which parts of the pipeline should be run
 run:
@@ -22,8 +22,8 @@ config:
   random_seed: 1234
 
   # Paths to the input data and where the output should be stored
-  data_path: /home/ozelz/npc1/data
-  output_path: /home/ozelz/npc1/output
+  data_path: /home/ozelz/npc/data
+  output_path: /home/ozelz/npc/output
 
   # Only interesting if you run the simulation
   java_memory: 48G
