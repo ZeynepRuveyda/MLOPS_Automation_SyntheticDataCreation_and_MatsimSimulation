@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: zeynep02/my-app-v2:tagname # Specify the image to usemy 
+        image: zeynep02/my-app-v3 # Specify the image to usemy 
         ports:
         - containerPort: 5000 # Specify the port to expose
         resources:
@@ -46,12 +46,19 @@ apiVersion: v1
 kind: PodDefault
 metadata:
   name: access-ml-pipeline
-  namespace: <<<YOUR_USER_PROFILE_NAMESPACE>>>
+  namespace: Simulation_MLOPS_Equasim
 spec:
   desc: Allow access to Kubeflow Pipelines
   selector:
     matchLabels:
       access-ml-pipeline: "true"
+
+'''apiVersion: v1
+kind: StorageClass
+metadata:
+  name: my-data-storage
+provisioner: ''' 
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -62,7 +69,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Gi
+      storage: 20Gi
   storageClassName: local-storage
 ---
 apiVersion: v1
@@ -71,7 +78,7 @@ metadata:
   name: my-data-pv
 spec:
   capacity:
-    storage: 10Gi
+    storage: 20Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce

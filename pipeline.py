@@ -5,8 +5,8 @@ import kfp.dsl as dsl
 def synthetic_population_pipeline(
     # Update the data path to match the Dockerfile
     working_directory: str = '/app/tmp', # where the pipeline can store temporary data
-    data_path: str = '/app/data',    #'/data'
-    output_path: str = '/app/output', #'/output'
+    data_path: str = '/data',    #'/data'
+    output_path: str = '/output', #'/output'
     processes: int = 4,
     hts: str = 'entd', # Define whether to use ENTD or EGT as the household travel survey (HTS)
     # Define sampling rate and random seed for the output population
@@ -35,7 +35,7 @@ def synthetic_population_pipeline(
         synpp_command = f'python3 -m synpp --working-directory {working_directory} --data-path {data_path} --output-path {output_path}'
         synpp_task = dsl.ContainerOp(
             name='run-synpp',
-            image='zeynep02/my-app-v2',  # Use your custom image here
+            image='zeynep02/my-app-v3',  # Use your custom image here
             command=['sh', '-c', synpp_command]
         )
 # Define the pipeline using the Kubeflow Pipelines DSL
