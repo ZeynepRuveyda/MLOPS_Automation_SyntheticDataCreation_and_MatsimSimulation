@@ -14,21 +14,20 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: my-app:latest # Specify the image to usemy 
+        image: zeynep02/my-app-v2:tagname # Specify the image to usemy 
         ports:
         - containerPort: 5000 # Specify the port to expose
+        resources:
         volumeMounts:
         - name: my-app-valume
-          mountPath: /app
-         # /var/lib/docker/volumes/minikube/_data #Specify the mounth path in the container     
-
+          mountPath: /app #Specify the mounth path in the container  
       volumes:
       - name: my-app-valume
-        hostPath:
+      persistentVolumeClaim:
+         claimName: my-data-pvc   # Name of the PersistentVolumeClaim
+        '''hostPath:
           path: home/ozelz/npc1/data
-          type: Directory
-       # persistentVolumeClaim:
-         # claimName: my-data-pvc   # Name of the PersistentVolumeClaim
+          type: Directory'''
 ---
 apiVersion: v1
 kind: Service
@@ -41,4 +40,42 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 5000
-  type: LoadBalancer
+  type: NodePort
+---
+apiVersion: v1
+kind: PodDefault
+metadata:
+  name: access-ml-pipeline
+  namespace: <<<YOUR_USER_PROFILE_NAMESPACE>>>
+spec:
+  desc: Allow access to Kubeflow Pipelines
+  selector:
+    matchLabels:
+      access-ml-pipeline: "true"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: local-storage
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-data-pv
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: /home/ozelz/npc1/data
