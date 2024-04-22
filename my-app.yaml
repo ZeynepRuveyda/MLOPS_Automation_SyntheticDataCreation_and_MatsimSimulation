@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: my-app 
-  replicas: 2 # Specify the number of pods to run
+  replicas: 5 # Specify the number of pods to run
   template:
     metadata:
       labels:
