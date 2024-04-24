@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   name: my-app-workflow
-  namespace:
+  namespace: default
 spec:
   entrypoint: my-step
   templates:
