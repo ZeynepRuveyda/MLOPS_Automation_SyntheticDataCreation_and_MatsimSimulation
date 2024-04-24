@@ -1,0 +1,10 @@
+apiVersion: kubeflow.org/v1
+kind: PodDefault
+metadata:
+  name: my-app-pipeline
+  namespace: Simulation_MLOPS_Equasim
+spec:
+  desc: Allow access to Kubeflow Pipelines
+  selector:
+    matchLabels:
+      my-app-pipeline: "true"

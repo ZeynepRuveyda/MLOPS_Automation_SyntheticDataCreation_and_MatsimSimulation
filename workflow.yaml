@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: my-app-workflow
+  namespace:
+spec:
+  entrypoint: my-step
+  templates:
+  - name: my-step
+    container:
+      image: zeynep02/my-app-v5:latest
+      command: [bash, -c]
+      args:
+      - source activate $(head -1 /app/environment.yml | cut -d' ' -f2) && python3 pipeline.py

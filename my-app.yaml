@@ -2,29 +2,31 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app-deployment
+  namespace: default
 spec:
   selector:
     matchLabels:
       app: my-app 
-  replicas: 5 # Specify the number of pods to run
+  replicas: 4 # Specify the number of pods to run
   template:
     metadata:
       labels:
         app: my-app
     spec:
-      containers:
-      - name: my-app-container
-        image: zeynep02/my-app-v3:latest # Specify the image to usemy 
-        ports:
-        - containerPort: 5000 # Specify the port to expose
-        resources:
-        volumeMounts:
-        - name: my-app-valume
-          mountPath: /app #Specify the mounth path in the container  
       volumes:
-      - name: my-app-valume
-      persistentVolumeClaim:
-         claimName: my-data-pvc   # Name of the PersistentVolumeClaim
+        - name: my-app-volume
+          persistentVolumeClaim:
+            claimName: my-data-pvc   # Name of the PersistentVolumeClaim
+      containers:
+        - name: my-app-container
+          image: zeynep02/my-app-v5:latest # Specify the image to usemy 
+          ports:
+          - containerPort: 5000 # Specify the port to expose
+          resources:
+          volumeMounts:
+            - name: my-app-volume
+              mountPath: /app #Specify the mounth path in the container  
+      
 ---
 apiVersion: v1
 kind: Service
@@ -38,17 +40,6 @@ spec:
     port: 80
     targetPort: 5000
   type: NodePort
----
-apiVersion: v1
-kind: PodDefault
-metadata:
-  name: my-app-pipeline
-  namespace: Simulation_MLOPS_Equasim
-spec:
-  desc: Allow access to Kubeflow Pipelines
-  selector:
-    matchLabels:
-      access-ml-pipeline: "true"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

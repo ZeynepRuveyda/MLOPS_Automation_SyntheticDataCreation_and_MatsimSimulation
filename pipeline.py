@@ -2,6 +2,12 @@ import os
 import subprocess
 import kfp.dsl as dsl
 
+# Define the pipeline using the Kubeflow Pipelines DSL
+@dsl.pipeline(
+    name="Nord-Pas-de-Calais Creating Synthetic Data and Matsim Simulation",
+    description="A pipeline that create the synthetic data and simulate a Matsim using KFServing"
+)
+
 def synthetic_population_pipeline(
     # Update the data path to match the Dockerfile
     working_directory: str = '/app/tmp', # where the pipeline can store temporary data
@@ -35,24 +41,20 @@ def synthetic_population_pipeline(
         synpp_command = f'python3 -m synpp --working-directory {working_directory} --data-path {data_path} --output-path {output_path}'
         synpp_task = dsl.ContainerOp(
             name='run-synpp',
-            image='zeynep02/my-app-v3',  # Use your custom image here
+            image='docker.io/zeynep02/my-app-v5',  # Use your custom image here
             command=['sh', '-c', synpp_command]
         )
-# Define the pipeline using the Kubeflow Pipelines DSL
-@dsl.pipeline(
-    name="Nord-Pas-de-Calais Creating Synthetic Data and Matsim Simulation",
-    description="A pipeline that create the synthetic data and simulate a Matsim using KFServing"
-)
+
 
 # Define the parts of the pipeline to run
-parts_to_run = [
+partstorun = [
     'synthesis.output',  # To create the output population in the output_path
-    # Uncomment the line below if you want to run the full simulation
-    'matsim.output'  # You'll need Java for that
+    'matsim.output'  # You'll need Java for that and Uncomment the line below if you want to run the full simulation
 ]
 
+
 # This section defines which parts of the pipeline should be run
-run = parts_to_run
+run = partstorun
 
 # Compile and run the pipeline
 if __name__ == '__main__':
