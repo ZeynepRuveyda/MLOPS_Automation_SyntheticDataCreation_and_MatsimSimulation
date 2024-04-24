@@ -8,7 +8,7 @@ spec:
   templates:
   - name: my-step
     container:
-      image: zeynep02/my-app-v5:latest
+      image: zeynep02/my-app-v6:latest
       command: [bash, -c]
       args:
       - source activate $(head -1 /app/environment.yml | cut -d' ' -f2) && python3 pipeline.py
