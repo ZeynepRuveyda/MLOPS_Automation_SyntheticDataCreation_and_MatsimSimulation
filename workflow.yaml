@@ -2,18 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   name: my-app-workflow
-  namespace: default
+  namespace: kubeflow-user-example-com
 spec:
   entrypoint: my-step
   templates:
   - name: my-step
-    container: 
-    - name: my-app-container
+    container:
+      name: my-app-container
       image: zeynep02/my-app-v7:latest
       command: [bash, -c]
       args:
-      - source activate $(head -1 /app/environment.yml | cut -d' ' -f2) && python3 pipeline.py
-
-
+        - source activate $(head -1 /app/environment.yml | cut -d' ' -f2) && python3 pipeline.py
 
       

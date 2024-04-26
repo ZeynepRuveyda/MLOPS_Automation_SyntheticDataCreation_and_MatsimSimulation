@@ -2,7 +2,7 @@ apiVersion: kubeflow.org/v1alpha1
 kind: PodDefault
 metadata:
   name: my-app-pipeline
-  namespace: default
+  namespace: kubeflow-user-example-com
 spec:
   desc: Allow access to Kubeflow Pipelines
   selector:
