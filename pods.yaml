@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-container-pod
+spec:
+  containers:
+  - name: my-container-app
+    image: zeynep02/my-app-v7:latest
+    ports:
+    - containerPort: 5000

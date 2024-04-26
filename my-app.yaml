@@ -19,7 +19,7 @@ spec:
             claimName: my-data-pvc   # Name of the PersistentVolumeClaim
       containers:
         - name: my-app-container
-          image: zeynep02/my-app-v6:latest # Specify the image to usemy 
+          image: zeynep02/my-app-v7:latest # Specify the image to usemy 
           ports:
           - containerPort: 5000 # Specify the port to expose
           resources:

@@ -21,5 +21,5 @@ RUN echo "export PATH=/opt/conda/envs/$(head -1 $DIRECTORY/environment.yml | cut
 #ENV PATH /opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH >> ~/.bashrc
 
 # Specify the command to run on container start
-CMD ["bash", "-c", "python3 pipeline1.py"]
+CMD ["bash", "-c", "python3", "pipeline1.py"]
 #CMD ["python3", "pipeline.py"]
