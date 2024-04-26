@@ -10,9 +10,9 @@ import kfp.dsl as dsl
 
 def synthetic_population_pipeline(
     # Update the data path to match the Dockerfile
-    working_directory: str = '/app/tmp', # where the pipeline can store temporary data
-    data_path: str = '/data',    #'/data'
-    output_path: str = '/output', #'/output'
+    working_directory: str = '/home/ozelz/npc1/tmp', # where the pipeline can store temporary data
+    data_path: str = '/home/ozelz/npc1/data',    #'/data'
+    output_path: str = '/home/ozelz/npc1/output', #'/output'
     processes: int = 4,
     hts: str = 'entd', # Define whether to use ENTD or EGT as the household travel survey (HTS)
     # Define sampling rate and random seed for the output population
