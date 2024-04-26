@@ -41,7 +41,7 @@ def synthetic_population_pipeline(
         synpp_command = f'python3 -m synpp --working-directory {working_directory} --data-path {data_path} --output-path {output_path}'
         synpp_task = dsl.ContainerOp(
             name='run-synpp',
-            image='docker.io/zeynep02/my-app-v6',  # Use your custom image here
+            image='zeynep02/my-app-v6:latest',  # Use your custom image here
             command=['sh', '-c', synpp_command]
         )
 
