@@ -41,9 +41,9 @@ def synthetic_population_pipeline(
 
     # Define a volume to mount
     volume = dsl.VolumeOp(
-        name="volume",
-        resource_name="mlpipeline-minio-artifact",
-        modes=dsl.VOLUME_MODE_RWO
+        name="my-app-volume",
+        modes=dsl.VOLUME_MODE_RWO #ReadWriteOnce
+        size='20Gi' 
     )
 
     # Define pipeline steps here
@@ -54,13 +54,9 @@ def synthetic_population_pipeline(
             name='run-synpp',
             image='zeynep02/my-app-v7:latest',  # Use your custom image here
             command=['sh', '-c', synpp_command],
-            volumes=[volume.volume]
+            volumes={'/app':volume.volume}
         )
         
-        # Mount the volume to the container
-        synpp_task.add_volume_mount(volume.volume_mount)
-
-
 # Define the parts of the pipeline to run
 partstorun = [
     'synthesis.output',  # To create the output population in the output_path
