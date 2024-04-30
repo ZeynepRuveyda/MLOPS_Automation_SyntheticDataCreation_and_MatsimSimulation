@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: zeynep02/my-app-v7:latest
+        image: zeynep02/my-app-v9:latest
         ports:
         - containerPort: 5000

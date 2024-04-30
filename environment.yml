@@ -26,5 +26,4 @@ dependencies:
   - sqlite=3.42.0
 
   - pip:
-    - kfp==1.7.0 #kubeflow version 
     - synpp==1.5.1

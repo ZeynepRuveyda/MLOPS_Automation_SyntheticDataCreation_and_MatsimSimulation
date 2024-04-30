@@ -9,7 +9,7 @@ spec:
   - name: my-step
     container:
       name: my-app-container
-      image: zeynep02/my-app-v7:latest
+      image: zeynep02/my-app-v9:latest
       command: [bash, -c]
       args:
         - source activate $(head -1 /app/environment.yml | cut -d' ' -f2) && python3 pipeline1.py
