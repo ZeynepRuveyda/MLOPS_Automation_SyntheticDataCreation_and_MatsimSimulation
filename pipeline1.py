@@ -39,6 +39,13 @@ def synthetic_population_pipeline(
     osmosis_binary: str = '/home/ozelz/osmosis/bin/osmosis'
 ):
 
+    # Define a volume to mount
+    volume = dsl.VolumeOp(
+        name="volume",
+        resource_name="mlpipeline-minio-artifact",
+        modes=dsl.VOLUME_MODE_RWO
+    )
+
     # Define pipeline steps here
     with dsl.Pipeline() as pipeline:
         # Step 1: Run the main processing task
@@ -46,8 +53,12 @@ def synthetic_population_pipeline(
         synpp_task = dsl.ContainerOp(
             name='run-synpp',
             image='zeynep02/my-app-v7:latest',  # Use your custom image here
-            command=['sh', '-c', synpp_command]
+            command=['sh', '-c', synpp_command],
+            volumes=[volume.volume]
         )
+        
+        # Mount the volume to the container
+        synpp_task.add_volume_mount(volume.volume_mount)
 
 
 # Define the parts of the pipeline to run
@@ -55,7 +66,6 @@ partstorun = [
     'synthesis.output',  # To create the output population in the output_path
     'matsim.output'  # You'll need Java for that and Uncomment the line below if you want to run the full simulation
 ]
-
 
 # This section defines which parts of the pipeline should be run
 run = partstorun

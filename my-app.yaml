@@ -16,7 +16,7 @@ spec:
       volumes:
         - name: my-app-volume
           persistentVolumeClaim:
-            claimName: my-data-pvc   # Name of the PersistentVolumeClaim
+            claimName: my-data-pv   # Name of the PersistentVolumeClaim
       containers:
         - name: my-app-container
           image: zeynep02/my-app-v7:latest # Specify the image to usemy 
