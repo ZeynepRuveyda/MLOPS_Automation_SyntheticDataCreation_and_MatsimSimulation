@@ -1,6 +1,10 @@
 import os
 import subprocess
+import kfp
+from kfp.components import create_component_from_func
+from kfp import dsl
 import kfp.dsl as dsl
+from kfp import compiler
 
 # Define the pipeline using the Kubeflow Pipelines DSL
 @dsl.pipeline(
@@ -58,4 +62,4 @@ run = partstorun
 
 # Compile and run the pipeline
 if __name__ == '__main__':
-    kfp.compiler.Compiler().compile(automation_pipeline, package_path='my-app.yaml')
+    kfp.compiler.Compiler().compile(synthetic_population_pipeline, package_path='my-app.yaml')

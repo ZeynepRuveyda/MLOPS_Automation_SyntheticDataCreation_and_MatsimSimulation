@@ -60,7 +60,7 @@ partstorun = [
 # This section defines which parts of the pipeline should be run
 run = partstorun# Compile and run the pipeline
 if __name__ == '__main__':
-    kfp.compiler.Compiler().compile(automation_pipeline, package_path='my-app.yaml')
+    kfp.compiler.Compiler().compile(synthetic_population_pipeline, package_path='my-app.yaml')
 
     
 
