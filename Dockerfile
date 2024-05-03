@@ -7,6 +7,16 @@ ENV DIRECTORY=/app
 WORKDIR ${DIRECTORY}
 #WORKDIR /app
 
+# Download and extract Osmosis
+RUN wget https://github.com/openstreetmap/osmosis/releases/download/0.47.1/osmosis-0.47.1.tgz && \
+    mkdir osmosis && \
+    mv osmosis-0.47.1.tgz osmosis && \
+    cd osmosis && \
+    tar xvfz osmosis-0.47.1.tgz && \
+    rm osmosis-0.47.1.tgz && \
+    chmod a+x bin/osmosis
+
+
 # Copy the environment.yml file into the container at /app
 COPY . . 
 #COPY environment.yml .
