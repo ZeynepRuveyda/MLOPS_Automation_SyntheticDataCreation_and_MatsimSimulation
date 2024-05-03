@@ -36,7 +36,7 @@ def synthetic_population_pipeline(
     osm_path: str = 'osm_npc',
     ban_path: str = 'ban_npc',
     bdtopo_path: str = 'bdtopo_npc',
-    osmosis_binary: str = '/home/ozelz/osmosis/bin/osmosis'
+    osmosis_binary: str = '/app/osmosis/bin/osmosis'
 ):
 
     # Define a volume to mount
