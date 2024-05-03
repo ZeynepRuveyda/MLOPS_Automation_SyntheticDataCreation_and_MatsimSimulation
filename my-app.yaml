@@ -40,30 +40,3 @@ spec:
     port: 80
     targetPort: 5000
   type: NodePort
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: my-data-pv
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
-  storageClassName: local-storage
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: my-data-pv
-spec:
-  capacity:
-    storage: 20Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
-  hostPath:
-    path: /home/ozelz/npc1/data
