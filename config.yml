@@ -50,4 +50,4 @@ config:
   #use_urban_type: true
   #matching_attributes: ["urban_type", "*default*"]
   
-  osmosis_binary: /home/ozelz/osmosis/bin/osmosis
+  osmosis_binary: /app/osmosis/bin/osmosis
