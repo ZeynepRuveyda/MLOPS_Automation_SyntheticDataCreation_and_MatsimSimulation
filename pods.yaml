@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
   - name: my-container-app
-    image: zeynep02/my-app-v9:latest
+    image: zeynep02/my-app-v4:latest
     ports:
     - containerPort: 5000
