@@ -52,7 +52,7 @@ def synthetic_population_pipeline(
         synpp_command = f'python3 -m synpp --working-directory {working_directory} --data-path {data_path} --output-path {output_path}'
         synpp_task = dsl.ContainerOp(
             name='run-synpp',
-            image='zeynep02/my-app-v9:latest',  # Use your custom image here
+            image='zeynep02/my-app-v4:latest',  # Use your custom image here
             command=['sh', '-c', synpp_command],
             volumes={'/app':volume.volume}
         )

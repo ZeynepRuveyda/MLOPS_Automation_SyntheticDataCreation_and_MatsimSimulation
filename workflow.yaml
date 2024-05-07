@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
-  name: my-app-workflow
+  name: my-app-workflow4
   namespace: kubeflow-user-example-com
 spec:
   entrypoint: my-step
