@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1
+kind: AuthotizationPolicy
+metadata: 
+  name: my-app-policy
+  namespace: kubeflow-user-example-com
+spec:
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+       namespace:["kubeflow-user-example-com"] 
