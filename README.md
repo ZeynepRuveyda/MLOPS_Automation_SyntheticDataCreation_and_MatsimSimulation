@@ -117,7 +117,7 @@ Codename:       jammy
 
 *to run it on your local computer follow the guideline with the link:*
 
-https://www.notion.so/FULL-INSTALLATION-6f0387af141c414e81bcc85d4cde95b9
+[https://www.notion.so/FULL-INSTALLATION-6f0387af141c414e81bcc85d4cde95b9](https://www.notion.so/INSTALLATION-OF-KUBERNETES-KUBEFLOW-c7eb866517c847bd9141c243f977280e)
 
 
 ## Here are the Demos and enjoy with these  🤡
