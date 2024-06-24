@@ -122,17 +122,12 @@ Codename:       jammy
 
 ## Here are the Demos and enjoy with these  🤡
 
-### 1) For git clone
-[Screencast from 06-14-2024 07:57:41 AM.webm](https://github.com/ZeynepRuveyda/MLOps-Kubernetes-Kubeflow/assets/72027409/f02ac4be-bb2e-47e5-befa-23f38789aee8)
-
-
-
-### 2)For git clone & update the config.yaml
+### 1)For git clone & update the config.yaml
 
 [automation_gitclone&configyaml.webm](https://github.com/ZeynepRuveyda/MLOps-Kubernetes-Kubeflow/assets/72027409/edcb8d56-ba19-4ae8-b5d6-90bcf75d3456)
 
 
 
-### 3) For the full pipeline with synthetic data creation and matsim simulation
+### 2) For the full pipeline with synthetic data creation and matsim simulation
 
 
