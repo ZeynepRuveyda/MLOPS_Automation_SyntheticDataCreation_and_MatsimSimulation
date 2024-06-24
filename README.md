@@ -127,7 +127,8 @@ Please use this folder [kubernetes_last_codes](https://github.com/ZeynepRuveyda/
 
 ### 1)For git clone & update the config.yaml
 
-[automation_gitclone&configyaml.webm](https://github.com/ZeynepRuveyda/MLOps-Kubernetes-Kubeflow/assets/72027409/edcb8d56-ba19-4ae8-b5d6-90bcf75d3456)
+[automation_gitclone&configyaml.webm](https://github.com/ZeynepRuveyda/MLOPS_Automation_SyntheticDataCreation_and_MatsimSimulation/assets/72027409/f9b51fff-b079-4a71-9176-930a9ecd29c1)
+
 
 
 
