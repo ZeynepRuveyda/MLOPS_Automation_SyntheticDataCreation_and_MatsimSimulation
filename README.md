@@ -110,6 +110,9 @@ Codename:       jammy
 
 **kustomize**: v5.3.0
 
+## 🔴🔴🔴
+
+Please use this folder [kubernetes_last_codes](https://github.com/ZeynepRuveyda/MLOPS_Automation_SyntheticDataCreation_and_MatsimSimulation/tree/master/kubernetes_last_codes). for running your automation code
 
 ## Dependencies
 
