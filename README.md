@@ -118,7 +118,12 @@ Please use this folder [kubernetes_last_codes](https://github.com/ZeynepRuveyda/
 
 **All the requirements needed for this projects is stored in the [requirement.txt](environment.txt) file.**
 
-*to run it on your local computer follow the guideline with the link:*
+
+*For the full information on the project:*
+
+[https://www.notion.so/LVMT-ADEME-AUTOMATION-PROJECT-S-DOCUMENTATION-ea83e7224d4048608fdce133ac41572b](https://www.notion.so/LVMT-ADEME-AUTOMATION-PROJECT-S-DOCUMENTATION-ea83e7224d4048608fdce133ac41572b)
+
+*To run it on your local computer follow the guideline with the link:*
 
 [https://www.notion.so/FULL-INSTALLATION-6f0387af141c414e81bcc85d4cde95b9](https://www.notion.so/INSTALLATION-OF-KUBERNETES-KUBEFLOW-c7eb866517c847bd9141c243f977280e)
 
